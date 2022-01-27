@@ -1,0 +1,17 @@
+name: 'NPM PUBLISH'
+description: 'NPM'
+inputs:
+  node_auth_token:
+    description: 'Node Auth Token'
+    required: true
+runs:
+  using: "composite"
+  steps:
+  - name: Publish
+    run: |
+      npm publish --access public
+    shell: bash
+    env:
+      NODE_AUTH_TOKEN: ${{ inputs.node_auth_token }}
+      CI: true
+
